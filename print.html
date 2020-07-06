@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="perface.html">写在前面</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="perface.html">写在前面</a></li><li class="chapter-item expanded "><a href="day_00.html"><strong aria-hidden="true">1.</strong> 第0天 着手开发之前</a></li><li class="chapter-item expanded "><a href="day_01.html"><strong aria-hidden="true">2.</strong> 第1天 从计算机结构到汇编程序入门</a></li><li class="chapter-item expanded "><a href="day_02.html"><strong aria-hidden="true">3.</strong> 第2天 汇编语言学习与Makefile入门</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -149,7 +149,123 @@
 
                 <div id="content" class="content">
                     <main>
-                        
+                        <h1><a class="header" href="#写在前面" id="写在前面">写在前面</a></h1>
+<blockquote>
+<p>不仅是编写操作系统，任何事都是一样的。如果讲解的人认为它很难，那就不可能把它讲述得通俗易懂，即便是同样的内容，也会讲得无比复杂。这样的讲解，肯定是很难懂的。</p>
+</blockquote>
+<h2><a class="header" href="#作者网站和材料" id="作者网站和材料">作者网站和材料</a></h2>
+<p>作者网站：<a href="http://hrb.osask.jp">http://hrb.osask.jp</a></p>
+<p>作者网站有关于本书的相关材料和开发工具，本人下载了4个并将其放在了files分支。</p>
+<table><thead><tr><th>文件名</th><th>文件说明</th><th>其他</th></tr></thead><tbody>
+<tr><td>hrb27fd0.zip</td><td>软盘映像</td><td></td></tr>
+<tr><td>hrb27cd0.zip</td><td>CD-ROM映像</td><td></td></tr>
+<tr><td>tolset_h.zip</td><td>Win开发工具包</td><td></td></tr>
+<tr><td>z_tools.tar.bz2</td><td>Linux开发工具包</td><td></td></tr>
+</tbody></table>
+<p><strong>30天自制操作系统的磁盘影像</strong></p>
+<p>フロッピーディスク用イメージ（シンプル版）(119KB): <strong>hrb27fd0.zip</strong> 这个是软盘映像(简单版本)</p>
+<p>CD-ROM用イメージ（シンプル版）(120KB): <strong>hrb27cd0.zip</strong> 这个是CD-ROM映像(简单版本)</p>
+<p><strong>Windows开发工具集</strong></p>
+<p>「はりぼてOS」アプリ開発対応のtolset (2.90MB): <strong>tolset_h.zip</strong> </p>
+<p><strong>Linux开发工具集</strong></p>
+<p>コンパイル済みバイナリ（z_toolsの部分のみ）(1.03MB): <strong>z_tools.tar.bz2</strong></p>
+<p><strong>Docker开发集和MacOS工具集</strong></p>
+<p>请转到作者网站查看链接。</p>
+<h2><a class="header" href="#其他说明" id="其他说明">其他说明</a></h2>
+<p>本书涉及到语言显示的时候译者改为了中文，并翻译了书中代码的注释。但是光盘中的代码并没有翻译。</p>
+<p>如果源码出现乱码情况，可用相应编辑器以Shift-JIS编码打开。</p>
+<h1><a class="header" href="#第0天-着手开发之前" id="第0天-着手开发之前">第0天 着手开发之前</a></h1>
+<p>本书几乎不需要相关储备知识，初学者友好。</p>
+<p>本书以IBM PC/AT兼容机（也就是所谓的Windows个人电脑）为对象进行说明。
+我们对机器的配置要求是CPU高于386（因为我们要开发32位操作系统）。换句话说，只要是能运行Windows 95以上操作系统的机器就没有问题。
+不必担心内存和硬盘剩余空间的问题。</p>
+<p>找个现有操作系统进行改造；从零开始写。我们选择后者。</p>
+<p>用C语言和汇编语言进行开发。</p>
+<p>本章第7小节有版权声明，引用作者书中和光盘中的代码不需要申请和声明也行，所用到的工具软件不在此范围内。
+因此，自己练习的代码可以自己决定如何使用和分发。</p>
+<p>为期四周的DIY操作系统之旅开始了。</p>
+<h1><a class="header" href="#第1天-从计算机结构到汇编程序入门" id="第1天-从计算机结构到汇编程序入门">第1天 从计算机结构到汇编程序入门</a></h1>
+<h2><a class="header" href="#1-先动手操作" id="1-先动手操作">1 先动手操作</a></h2>
+<p>一款<a href="http://www.vcraft.jp/soft/bz.html">二进制编辑器(Binary Editor)</a>, 文中说下载<code>Bz1621.lzh</code>但实际上自己下载的是<code>Bz162.zip</code>，解压后启动<code>Bz.exe</code>即可。</p>
+<p>文中说用<code>!cons_nt.bat</code>文件启动<code>CMD</code>控制台，然后输入<code>run</code>即可用QEMU来模拟。
+然而本人在WIN10中无法成功操作，发现无法在<code>CMD</code>控制台下正常运行，但是<code>PowerShell</code>下逐条复制<code>run.bat</code>中的每行运行成功。遗憾的是，目前还不会批量执行powershell下的命令，需要现学一下脚本怎么写。</p>
+<p>开始制作软盘映像。</p>
+<ul>
+<li>双击<code>Bz.exe</code>，打开文件<code>hrb27fd0/haribote.img</code>，复制<code>0x00-0x90</code>的数据。</li>
+<li>新建文件，粘贴。如果无法粘贴则在Edit中把Read Only取消勾选。</li>
+<li><code>0x90-0x168000</code>全部都是0，总共1474560字节(=1440 * 1024 Bytes)，软件最下边有显示当前文件大小。</li>
+<li>保存为<code>ddOS.img</code>，可以自定义名称。</li>
+</ul>
+<p>启动QEMU模拟器看下效果吧。
+<del>这里在仓库的根目录建立了一个文件，作为脚本自动执行一些命令。</del></p>
+<pre><code class="language-cmd">// 原命令的文件夹YourWork是在tolset_h中与z_tools同级
+copy helloos.img ../z_tools/qemu/fdimage0.bin
+../z_tools/make.exe -C ../z_tools/qemu
+</code></pre>
+<p>在当前路径下启动PowerShell后直接复制下面的命令行粘贴运行即可，目前成功启动qemu显示0错误。</p>
+<pre><code class="language-powershell">// 根据自己的练习的文件夹路径，自行调整
+copy ddOS.img ../tolset_h/z_tools/qemu/fdimage0.bin
+cd ../tolset_h/z_tools/
+./make.exe -C qemu
+</code></pre>
+<h2><a class="header" href="#究竟做了些什么" id="究竟做了些什么">究竟做了些什么</a></h2>
+<p>二进制</p>
+<h2><a class="header" href="#初次体验汇编程序" id="初次体验汇编程序">初次体验汇编程序</a></h2>
+<p>作者开发了一个简化的汇编器nask。
+对应的汇编语言中DB(define byte)往文件里写入1个字节的指令，
+RESB(reserve byte)从当前位置空出来n个字节，以0x00填充。</p>
+<p><del>代码没有写，待补充，在附带光盘的projects\01_day\helloos2目录下。</del></p>
+<p>原文是启动控制台!cons，输入asm，输入run运行。</p>
+<p>当然这里本人自己修改了路径，之后的都是自己调整了路径的，不再单独声明。
+<strong>默认笔记中记录的都是根据自己的路径来安排的，并且默认都是在PowerShell下进行的，特此声明。</strong>
+<strong>另外，笔记中出现的“作者”表示《30天自制操作系统》的原作者，而“本人”和“笔者”表示写本笔记的人</strong></p>
+<pre><code>// 汇编刚刚写好的作者自己开发的汇编
+../tolset_h/z_tools/nask.exe ddOS.nas ddOS.img
+// 执行和之前一样的命令
+copy ddOS.img ../tolset_h/z_tools/qemu/fdimage0.bin
+cd ../tolset_h/z_tools/
+./make.exe -C qemu
+</code></pre>
+<h2><a class="header" href="#加工润色" id="加工润色">加工润色</a></h2>
+<blockquote>
+<p>再有就是DW指令和DD指令，它们分别是“define word”和“define double-word”的缩写，是DB指令的“堂兄弟”。word的本意是“单词”，但在计算机汇编语言的世界里，word指的是“16位”的意思，也就是2个字节。“double-word”是“32位”的意思，也就是4个字节。
+对了，差点忘记说RESB 0x1fe-$了。这个美元符号的意思如果不讲，恐怕谁也搞不明白，它是一个变量，可以告诉我们这一行现在的字节数</p>
+</blockquote>
+<p><del>代码没有写，待补充，在附带光盘的projects\01_day\helloos2目录下。</del></p>
+<p>汇编中的各部分的说明。</p>
+<ul>
+<li>FAT12格式．..（FAT12 Format）用Windows或MS-DOS格式化出来的软盘就是这种格式。</li>
+<li>启动区．.........（boot sector）软盘第一个的扇区称为启动区。以0x55AA结尾。</li>
+<li>IPL.........…....initial program loader的缩写。启动程序加载器。名字可以自定义但是必须是八个字节，不足要用空格补齐。</li>
+<li>启动．.........….（boot）boot这个词是bootstrap的缩写，bootstrap这个词就有“自力更生完成任务”这种意思。这里是把矛盾的操作系统自动启动机制，称为bootstrap方式。</li>
+</ul>
+<blockquote>
+<p>启动．.........….（boot）boot这个词本是长靴（boots）的单数形式。它与计算机的启动有什么关系呢？一般应该将启动称为start的。实际上，boot这个词是bootstrap的缩写，原指靴子上附带的便于拿取的靴带。但自从有了《吹牛大王历险记》（德国）这个故事以后，bootstrap这个词就有了“自力更生完成任务”这种意思（大家如果对详情感兴趣，可以在Google上查找，也可以在帮助和支持网页http://hrb.osask.jp上提问）。而且，磁盘上明明装有操作系统，还要说读入操作系统的程序（即IPL）也放在磁盘里，这就像打开宝物箱的钥匙就在宝物箱里一样，是一种矛盾的说法。这种矛盾的操作系统自动启动机制，被称为bootstrap方式。boot这个说法就来源于此。如果是笔者来命名的话，肯定不会用bootstrap这么奇怪的名字，笔者大概会叫它“多级火箭式”吧。</p>
+</blockquote>
+<p>这一小节没有指导运行看看，不过感觉和上一小节的命令一样，可以运行一下看看效果。</p>
+<h1><a class="header" href="#第2天-汇编语言学习与makefile入门" id="第2天-汇编语言学习与makefile入门">第2天 汇编语言学习与Makefile入门</a></h1>
+<h2><a class="header" href="#介绍文本编辑器" id="介绍文本编辑器">介绍文本编辑器</a></h2>
+<h2><a class="header" href="#继续开发" id="继续开发">继续开发</a></h2>
+<p>介绍了汇编语言，当然这里的汇编有可能是作者自己根据x86汇编进行简化之后的。</p>
+<h2><a class="header" href="#先制作启动区" id="先制作启动区">先制作启动区</a></h2>
+<p><del>代码没尝试，待补充，在projects/02_day的helloos4文件夹下</del></p>
+<p>将512字节的启动区和后面的磁盘映像分开来处理，经过改造，只需要以下几步即可。</p>
+<ul>
+<li>把ddOS.nas的后半部分截掉，只保留512B并改名为ipl.nas。</li>
+<li>改造asm.bat使其把输出的文件名改成ipl.bin，另外可以顺便输出列表文件ipl.lst。</li>
+<li>增加making.bat以ipl.bin为基础制作磁盘映像文件ddOS.img的批处理文件
+<ul>
+<li>利用作者开发的磁盘映像管理工具deimg.exe，先读入一个空白文件，在开头写入ipl.bin的内容，最后输出ddOS.img文件。</li>
+</ul>
+</li>
+</ul>
+<pre><code>// 相应的命令行待补充
+</code></pre>
+<h2><a class="header" href="#makefile入门" id="makefile入门">Makefile入门</a></h2>
+<p><del>备忘，这里需要根据这个路径下的文件进行改造新环境的命令</del>
+<del>我们需要调用make.exe来让这个Makefile发挥作用。为了能更方便地从命令行窗口运行这个工具，我们来做个make.bat。make.bat就放在tolset的z_new_w文件夹中，可以直接把它复制过来用。</del></p>
+<p><del>projects/02_day下的helloos5文件夹里</del></p>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

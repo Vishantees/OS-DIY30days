@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>写在前面 - 读书笔记《30天自制操作系统》</title>
+        <title>第2天 汇编语言学习与Makefile入门 - 读书笔记《30天自制操作系统》</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="perface.html">写在前面</a></li><li class="chapter-item expanded "><a href="day_00.html"><strong aria-hidden="true">1.</strong> 第0天 着手开发之前</a></li><li class="chapter-item expanded "><a href="day_01.html"><strong aria-hidden="true">2.</strong> 第1天 从计算机结构到汇编程序入门</a></li><li class="chapter-item expanded "><a href="day_02.html"><strong aria-hidden="true">3.</strong> 第2天 汇编语言学习与Makefile入门</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="perface.html">写在前面</a></li><li class="chapter-item expanded "><a href="day_00.html"><strong aria-hidden="true">1.</strong> 第0天 着手开发之前</a></li><li class="chapter-item expanded "><a href="day_01.html"><strong aria-hidden="true">2.</strong> 第1天 从计算机结构到汇编程序入门</a></li><li class="chapter-item expanded "><a href="day_02.html" class="active"><strong aria-hidden="true">3.</strong> 第2天 汇编语言学习与Makefile入门</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,42 +147,39 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#写在前面" id="写在前面">写在前面</a></h1>
-<blockquote>
-<p>不仅是编写操作系统，任何事都是一样的。如果讲解的人认为它很难，那就不可能把它讲述得通俗易懂，即便是同样的内容，也会讲得无比复杂。这样的讲解，肯定是很难懂的。</p>
-</blockquote>
-<h2><a class="header" href="#作者网站和材料" id="作者网站和材料">作者网站和材料</a></h2>
-<p>作者网站：<a href="http://hrb.osask.jp">http://hrb.osask.jp</a></p>
-<p>作者网站有关于本书的相关材料和开发工具，本人下载了4个并将其放在了files分支。</p>
-<table><thead><tr><th>文件名</th><th>文件说明</th><th>其他</th></tr></thead><tbody>
-<tr><td>hrb27fd0.zip</td><td>软盘映像</td><td></td></tr>
-<tr><td>hrb27cd0.zip</td><td>CD-ROM映像</td><td></td></tr>
-<tr><td>tolset_h.zip</td><td>Win开发工具包</td><td></td></tr>
-<tr><td>z_tools.tar.bz2</td><td>Linux开发工具包</td><td></td></tr>
-</tbody></table>
-<p><strong>30天自制操作系统的磁盘影像</strong></p>
-<p>フロッピーディスク用イメージ（シンプル版）(119KB): <strong>hrb27fd0.zip</strong> 这个是软盘映像(简单版本)</p>
-<p>CD-ROM用イメージ（シンプル版）(120KB): <strong>hrb27cd0.zip</strong> 这个是CD-ROM映像(简单版本)</p>
-<p><strong>Windows开发工具集</strong></p>
-<p>「はりぼてOS」アプリ開発対応のtolset (2.90MB): <strong>tolset_h.zip</strong> </p>
-<p><strong>Linux开发工具集</strong></p>
-<p>コンパイル済みバイナリ（z_toolsの部分のみ）(1.03MB): <strong>z_tools.tar.bz2</strong></p>
-<p><strong>Docker开发集和MacOS工具集</strong></p>
-<p>请转到作者网站查看链接。</p>
-<h2><a class="header" href="#其他说明" id="其他说明">其他说明</a></h2>
-<p>本书涉及到语言显示的时候译者改为了中文，并翻译了书中代码的注释。但是光盘中的代码并没有翻译。</p>
-<p>如果源码出现乱码情况，可用相应编辑器以Shift-JIS编码打开。</p>
+                        <h1><a class="header" href="#第2天-汇编语言学习与makefile入门" id="第2天-汇编语言学习与makefile入门">第2天 汇编语言学习与Makefile入门</a></h1>
+<h2><a class="header" href="#介绍文本编辑器" id="介绍文本编辑器">介绍文本编辑器</a></h2>
+<h2><a class="header" href="#继续开发" id="继续开发">继续开发</a></h2>
+<p>介绍了汇编语言，当然这里的汇编有可能是作者自己根据x86汇编进行简化之后的。</p>
+<h2><a class="header" href="#先制作启动区" id="先制作启动区">先制作启动区</a></h2>
+<p><del>代码没尝试，待补充，在projects/02_day的helloos4文件夹下</del></p>
+<p>将512字节的启动区和后面的磁盘映像分开来处理，经过改造，只需要以下几步即可。</p>
+<ul>
+<li>把ddOS.nas的后半部分截掉，只保留512B并改名为ipl.nas。</li>
+<li>改造asm.bat使其把输出的文件名改成ipl.bin，另外可以顺便输出列表文件ipl.lst。</li>
+<li>增加making.bat以ipl.bin为基础制作磁盘映像文件ddOS.img的批处理文件
+<ul>
+<li>利用作者开发的磁盘映像管理工具deimg.exe，先读入一个空白文件，在开头写入ipl.bin的内容，最后输出ddOS.img文件。</li>
+</ul>
+</li>
+</ul>
+<pre><code>// 相应的命令行待补充
+</code></pre>
+<h2><a class="header" href="#makefile入门" id="makefile入门">Makefile入门</a></h2>
+<p><del>备忘，这里需要根据这个路径下的文件进行改造新环境的命令</del>
+<del>我们需要调用make.exe来让这个Makefile发挥作用。为了能更方便地从命令行窗口运行这个工具，我们来做个make.bat。make.bat就放在tolset的z_new_w文件夹中，可以直接把它复制过来用。</del></p>
+<p><del>projects/02_day下的helloos5文件夹里</del></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-
-                        
-                            <a rel="next" href="day_00.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="day_01.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+                        
+
                         
 
                         <div style="clear: both"></div>
@@ -192,11 +189,11 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-
-                
-                    <a rel="next" href="day_00.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="day_01.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+                
+
                 
             </nav>
 

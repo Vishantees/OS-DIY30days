@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>写在前面 - 读书笔记《30天自制操作系统》</title>
+        <title>第0天 着手开发之前 - 读书笔记《30天自制操作系统》</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="perface.html">写在前面</a></li><li class="chapter-item expanded "><a href="day_00.html"><strong aria-hidden="true">1.</strong> 第0天 着手开发之前</a></li><li class="chapter-item expanded "><a href="day_01.html"><strong aria-hidden="true">2.</strong> 第1天 从计算机结构到汇编程序入门</a></li><li class="chapter-item expanded "><a href="day_02.html"><strong aria-hidden="true">3.</strong> 第2天 汇编语言学习与Makefile入门</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="perface.html">写在前面</a></li><li class="chapter-item expanded "><a href="day_00.html" class="active"><strong aria-hidden="true">1.</strong> 第0天 着手开发之前</a></li><li class="chapter-item expanded "><a href="day_01.html"><strong aria-hidden="true">2.</strong> 第1天 从计算机结构到汇编程序入门</a></li><li class="chapter-item expanded "><a href="day_02.html"><strong aria-hidden="true">3.</strong> 第2天 汇编语言学习与Makefile入门</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,40 +147,29 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#写在前面" id="写在前面">写在前面</a></h1>
-<blockquote>
-<p>不仅是编写操作系统，任何事都是一样的。如果讲解的人认为它很难，那就不可能把它讲述得通俗易懂，即便是同样的内容，也会讲得无比复杂。这样的讲解，肯定是很难懂的。</p>
-</blockquote>
-<h2><a class="header" href="#作者网站和材料" id="作者网站和材料">作者网站和材料</a></h2>
-<p>作者网站：<a href="http://hrb.osask.jp">http://hrb.osask.jp</a></p>
-<p>作者网站有关于本书的相关材料和开发工具，本人下载了4个并将其放在了files分支。</p>
-<table><thead><tr><th>文件名</th><th>文件说明</th><th>其他</th></tr></thead><tbody>
-<tr><td>hrb27fd0.zip</td><td>软盘映像</td><td></td></tr>
-<tr><td>hrb27cd0.zip</td><td>CD-ROM映像</td><td></td></tr>
-<tr><td>tolset_h.zip</td><td>Win开发工具包</td><td></td></tr>
-<tr><td>z_tools.tar.bz2</td><td>Linux开发工具包</td><td></td></tr>
-</tbody></table>
-<p><strong>30天自制操作系统的磁盘影像</strong></p>
-<p>フロッピーディスク用イメージ（シンプル版）(119KB): <strong>hrb27fd0.zip</strong> 这个是软盘映像(简单版本)</p>
-<p>CD-ROM用イメージ（シンプル版）(120KB): <strong>hrb27cd0.zip</strong> 这个是CD-ROM映像(简单版本)</p>
-<p><strong>Windows开发工具集</strong></p>
-<p>「はりぼてOS」アプリ開発対応のtolset (2.90MB): <strong>tolset_h.zip</strong> </p>
-<p><strong>Linux开发工具集</strong></p>
-<p>コンパイル済みバイナリ（z_toolsの部分のみ）(1.03MB): <strong>z_tools.tar.bz2</strong></p>
-<p><strong>Docker开发集和MacOS工具集</strong></p>
-<p>请转到作者网站查看链接。</p>
-<h2><a class="header" href="#其他说明" id="其他说明">其他说明</a></h2>
-<p>本书涉及到语言显示的时候译者改为了中文，并翻译了书中代码的注释。但是光盘中的代码并没有翻译。</p>
-<p>如果源码出现乱码情况，可用相应编辑器以Shift-JIS编码打开。</p>
+                        <h1><a class="header" href="#第0天-着手开发之前" id="第0天-着手开发之前">第0天 着手开发之前</a></h1>
+<p>本书几乎不需要相关储备知识，初学者友好。</p>
+<p>本书以IBM PC/AT兼容机（也就是所谓的Windows个人电脑）为对象进行说明。
+我们对机器的配置要求是CPU高于386（因为我们要开发32位操作系统）。换句话说，只要是能运行Windows 95以上操作系统的机器就没有问题。
+不必担心内存和硬盘剩余空间的问题。</p>
+<p>找个现有操作系统进行改造；从零开始写。我们选择后者。</p>
+<p>用C语言和汇编语言进行开发。</p>
+<p>本章第7小节有版权声明，引用作者书中和光盘中的代码不需要申请和声明也行，所用到的工具软件不在此范围内。
+因此，自己练习的代码可以自己决定如何使用和分发。</p>
+<p>为期四周的DIY操作系统之旅开始了。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
+                            <a rel="prev" href="perface.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
 
                         
-                            <a rel="next" href="day_00.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="day_01.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -192,9 +181,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
+                    <a rel="prev" href="perface.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
 
                 
-                    <a rel="next" href="day_00.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="day_01.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
