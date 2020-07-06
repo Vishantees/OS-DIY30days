@@ -1,0 +1,6 @@
+[book]
+title = "读书笔记《30天自制操作系统》"
+authors = ["Vishantees"]
+language = "en"
+multilingual = false
+src = "src"
